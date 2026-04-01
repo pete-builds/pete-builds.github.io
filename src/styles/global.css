@@ -267,6 +267,13 @@ p {
   padding: 0.4rem 0.9rem;
   border-radius: 4px;
   transition: border-color 0.15s ease, color 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.links-section a svg {
+  flex-shrink: 0;
 }
 
 .links-section a:hover {
