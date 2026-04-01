@@ -1,0 +1,48 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const articles = (await getCollection('articles')).sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+
+const recent = articles.slice(0, 5);
+---
+
+<BaseLayout title="Pete Schwamb | pete-builds">
+  <div class="hero">
+    <h1>Pete Schwamb</h1>
+    <p class="tagline">AI tools. Automation. Helping teams make it work.</p>
+    <p class="bio">
+      I help teams adopt AI tools and build automation that actually works in production.
+      Practical solutions, not hype. Currently focused on Claude Code hardening,
+      MCP server architecture, and self-hosted infrastructure.
+    </p>
+    <div class="links-section">
+      <a href="https://github.com/pete-builds" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/peteschwamb/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://brooksnewmedia.com" target="_blank" rel="noopener">Brooks New Media</a>
+    </div>
+  </div>
+
+  {recent.length > 0 && (
+    <section>
+      <h2 class="section-heading">Latest Articles</h2>
+      <ul class="article-list">
+        {recent.map((article) => (
+          <li>
+            <a href={`/articles/${article.id}/`} class="article-title">{article.data.title}</a>
+            <span class="article-date">
+              {new Date(article.data.date + 'T00:00:00').toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+              })}
+            </span>
+            <p class="article-desc">{article.data.description}</p>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+</BaseLayout>

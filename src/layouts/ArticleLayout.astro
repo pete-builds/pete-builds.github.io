@@ -1,0 +1,35 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  date: string;
+  description: string;
+  linkedinUrl?: string;
+}
+
+const { title, date, description, linkedinUrl } = Astro.props;
+
+const formattedDate = new Date(date + 'T00:00:00').toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<BaseLayout title={`${title} | pete-builds`} description={description}>
+  <article>
+    <div class="article-header">
+      <h1>{title}</h1>
+      <span class="meta">{formattedDate}</span>
+      {linkedinUrl && (
+        <a href={linkedinUrl} class="linkedin-link" target="_blank" rel="noopener">
+          Originally published on LinkedIn &rarr;
+        </a>
+      )}
+    </div>
+    <div class="article-body">
+      <slot />
+    </div>
+  </article>
+</BaseLayout>

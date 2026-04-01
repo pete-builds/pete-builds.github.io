@@ -1,0 +1,39 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "AI tools. Automation. Helping teams make it work." } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+  </head>
+  <body>
+    <nav>
+      <div class="nav-inner">
+        <a href="/" class="site-name">pete-builds</a>
+        <ul class="nav-links">
+          <li><a href="/articles/">Articles</a></li>
+          <li><a href="https://github.com/pete-builds" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+    </nav>
+    <main>
+      <slot />
+    </main>
+    <footer>
+      &copy; {new Date().getFullYear()} Pete Schwamb
+    </footer>
+  </body>
+</html>
