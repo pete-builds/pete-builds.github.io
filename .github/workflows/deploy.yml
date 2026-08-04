@@ -24,7 +24,11 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          # Astro 7 requires >=22.12.0. This was pinned at 20, so the build
+          # started failing the moment Astro raised its floor. package.json
+          # now declares the same constraint under "engines" so npm surfaces
+          # the mismatch locally instead of only here.
+          node-version: 24
           cache: npm
 
       - name: Install dependencies
