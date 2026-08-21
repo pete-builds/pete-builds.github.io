@@ -80,7 +80,7 @@ Over four days, the agent tracked the story and produced a structured report wit
 
 The report grew from initial findings to 490 lines. Every claim sourced. Updated continuously as the story developed, from the initial PyPI compromise through TeamPCP's second attack on Telnyx three days later.
 
-You can read the full report here: [LiteLLM PyPI Supply Chain Attack: Analysis and Comparison to XZ Utils Backdoor](https://github.com/pete-builds/research-reports/blob/main/litellm-pypi-supply-chain-attack.md)
+You can read the full report here: [LiteLLM PyPI Supply Chain Attack: Analysis and Comparison to XZ Utils Backdoor](https://pete-builds.github.io/reports/litellm-pypi-supply-chain-attack/)
 
 ## Why this matters
 
@@ -93,7 +93,7 @@ Anthropic already wrote the playbook. It's in their docs. I just implemented it.
 ## Links
 
 - [Anthropic: Reduce Hallucinations](https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-hallucinations)
-- [LiteLLM supply chain attack report](https://github.com/pete-builds/research-reports/blob/main/litellm-pypi-supply-chain-attack.md)
+- [LiteLLM supply chain attack report](https://pete-builds.github.io/reports/litellm-pypi-supply-chain-attack/)
 - [SearXNG](https://github.com/searxng/searxng)
 - [Claude Code](https://claude.ai/code)
 
