@@ -11,4 +11,15 @@ const articles = defineCollection({
   }),
 });
 
-export const collections = { articles };
+const reports = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/reports' }),
+  schema: z.object({
+    title: z.string(),
+    date: z.string(),
+    description: z.string(),
+    updated: z.string().optional(),
+    archived: z.boolean().default(false),
+  }),
+});
+
+export const collections = { articles, reports };

@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const reports = (await getCollection('reports')).sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+---
+
+<BaseLayout title="Reports | pete-builds" description="Citation-grounded research and incident reports.">
+  <h1>Reports</h1>
+  <p style="margin-top: 1rem;">
+    Long-form, citation-grounded write-ups. Every factual claim carries its source inline.
+  </p>
+  <ul class="article-list" style="margin-top: 1.5rem;">
+    {reports.map((report) => (
+      <li>
+        <a href={`/reports/${report.id}/`} class="article-title">{report.data.title}</a>
+        <span class="article-date">
+          {new Date(report.data.date + 'T00:00:00').toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          })}
+          {report.data.archived && ' · archived snapshot'}
+        </span>
+        <p class="article-desc">{report.data.description}</p>
+      </li>
+    ))}
+  </ul>
+</BaseLayout>
